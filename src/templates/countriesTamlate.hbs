@@ -1,0 +1,15 @@
+{{#each}}
+<li class="form">
+	<h1 class="title">{{name}}</h1>
+
+	<h2 class="title-info">{{name}}</h2>
+	<h2 class="title-info">{{population}}</h2>
+	<ul class="languages">
+		{{#each languages}}
+		<li class="languages-item">{{thi.name}}</li>
+		{{/each}}
+	</ul>
+	<img src="{{flag}}" alt="Flag" class="img-flag" width="300" height="auto">
+
+</li>
+{{/each}}
