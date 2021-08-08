@@ -1,12 +1,12 @@
-{{#each}}
+{{#each this}}
 <li class="form">
 	<h1 class="title">{{name}}</h1>
 
-	<h2 class="title-info">{{name}}</h2>
-	<h2 class="title-info">{{population}}</h2>
+	<h2 class="title-info"><span class="text">Country: </span>{{name}}</h2>
+	<h2 class="title-info"><span class="text">Population: </span>{{population}}</h2>
 	<ul class="languages">
 		{{#each languages}}
-		<li class="languages-item">{{thi.name}}</li>
+		<li class="languages-item"><span class="text-item">Language(s): </span>{{this.name}}</li>
 		{{/each}}
 	</ul>
 	<img src="{{flag}}" alt="Flag" class="img-flag" width="300" height="auto">

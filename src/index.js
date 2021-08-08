@@ -35,48 +35,43 @@ import { error } from "@pnotify/core";
 
 refs.input.addEventListener("input", debounce(searchCountry, 500));
 
-
 function searchCountry() {
   refs.ulList.innerHTML = "";
 
-  const inputValue =refs.input.value;
+  const inputValue = refs.input.value;
   console.log(inputValue);
   if (inputValue) {
-    fetchCountries(inputValue.trim()).then((data) => upDateTamplate(data)).catch(error=>console.log('error'));
+    fetchCountries(inputValue.trim())
+      .then((data) => upDateTamplate(data))
+      .catch((error) => console.log("error"));
   }
 }
 
+function upDateTamplate(data) {
+  const markup = countriesTamplate(data);
 
+  if (!data.length) {
+    error({
+      text: `Please enter a more specific query!`,
+      styling: "brighttheme",
+      delay: 500,
+    });
+    return;
+  }
 
+  if (data && data.length >= 5) {
+    error({
+      title: `Too many matches found.`,
+      text: `We found ${data.length} countries. Please enter a more specific query!`,
+      styling: "brighttheme",
+      delay: 500,
+    });
+    return data.forEach(
+      (country) => (refs.ulList.innerHTML += `<li>${country.name}</li>`)
+    );
+  }
 
-  
-  function upDateTamplate (data){
-	  const markup = countriesTamplate(data)
-	
-	
-	  if(!data.length){
-		
-		error({
-		  text: `Please enter a more specific query!`,
-		  styling:'brighttheme',
-		  delay: 500,
-		});
-		return
-	  }
-	  
-	  if(data && data.length >= 5){
-		error({
-		  title: `Too many matches found.`,
-		  text: `We found ${data.length} countries. Please enter a more specific query!`,
-		  styling:'brighttheme',
-		  delay: 500,
-	
-		});
-		return data.forEach(country=>refs.ulList.innerHTML += `<li>${country.name}</li>`);
-	  }
-	
-	  if(data.length === 1){
-	  refs.ulList.insertAdjacentHTML('afterbegin', markup)}
-	}
-	
-	
+  if (data.length === 1) {
+    refs.ulList.insertAdjacentHTML("beforeend", markup);
+  }
+}
