@@ -7,6 +7,7 @@ import countriesTamplate from "./templates/countriesTamlate.hbs";
 var debounce = require("lodash.debounce");
 import "@pnotify/core/dist/BrightTheme.css";
 import { error } from "@pnotify/core";
+import "./css/style.css";
 
 // function upDateTamplate(data) {
 //   const markUp = countriesTamplate(data);
