@@ -3,16 +3,20 @@
 	<h1 class="title">{{name}}</h1>
 
 	<div class="js-country-content">
+
 		<div class="country-info">
 			<h2 class="title-info"><span class="text">Country: </span>{{name}}</h2>
 			<h2 class="title-info"><span class="text">Population: </span>{{population}}</h2>
-			<ul class="languages">
+			<h2 class="title-info">
+				Languages:
 				{{#each languages}}
-				<li class="languages-item"><span class="text-item">Language: </span>{{this.name}}</li>
+				<p class="languages-item">{{this.name}}</p>
 				{{/each}}
-			</ul>
+			</h2>
 		</div>
 		<div><img src="{{flag}}" alt="Flag" class="img-flag" width="400" height="auto"></div>
 	</div>
 </li>
 {{/each}}
+
+{{!-- switzerland --}}

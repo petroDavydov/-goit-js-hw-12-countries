@@ -2,7 +2,7 @@ import refs from "./js/refs";
 import fetchCountries from "./js/fetchCountries";
 
 import countriesTamplate from "./templates/countriesTamlate.hbs";
-
+import listTamplate from "./templates/oneCardTemplate.hbs";
 // import { debounce } from "lodash.debounce";
 var debounce = require("lodash.debounce");
 import "@pnotify/core/dist/BrightTheme.css";
@@ -37,7 +37,7 @@ import "./css/style.css";
 refs.input.addEventListener("input", debounce(searchCountry, 500));
 
 function searchCountry() {
-  refs.ulList.innerHTML = "";
+  clearFeeld();
 
   const inputValue = refs.input.value;
   console.log(inputValue);
@@ -50,6 +50,7 @@ function searchCountry() {
 
 function upDateTamplate(data) {
   const markup = countriesTamplate(data);
+  const markupUl = listTamplate(data);
 
   if (!data.length) {
     error({
@@ -67,12 +68,26 @@ function upDateTamplate(data) {
       styling: "brighttheme",
       delay: 500,
     });
-    return data.forEach(
-      (country) => (refs.ulList.innerHTML += `<li>${country.name}</li>`)
-    );
+    return (refs.ulList.innerHTML = `<li>${country.name}</li>`);
+  }
+  if (data.length <= 10) {
+    refs.ulList.insertAdjacentHTML("beforeend", markupUl);
+  }
+  if (data.length > 10) {
+    error({
+      text: `Please enter a more specific query !`,
+      styling: "brighttheme",
+      delay: 500,
+    });
   }
 
   if (data.length === 1) {
-    refs.ulList.insertAdjacentHTML("beforeend", markup);
+    refs.ulList.innerHTML = "";
+    refs.ulListCard.insertAdjacentHTML("beforeend", markup);
   }
+}
+
+function clearFeeld() {
+  refs.ulListCard.innerHTML = "";
+  refs.ulList.innerHTML = "";
 }

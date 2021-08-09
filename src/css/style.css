@@ -28,7 +28,6 @@ body {
 }
 
 .js-list > li {
-  list-style-type: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 600;
   font-size: 20px;
@@ -36,10 +35,15 @@ body {
 }
 
 .languages-item {
-  list-style-type: none;
   font-family: monospace;
   font-size: 20px;
   font-weight: 700;
+  padding: 0px;
+  margin: 5px;
+}
+
+.languages-item:nth-child(1) {
+  margin-top: 10px;
 }
 
 .text-item {
