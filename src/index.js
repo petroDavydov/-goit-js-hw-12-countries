@@ -61,15 +61,15 @@ function upDateTamplate(data) {
     return;
   }
 
-  if (data && data.length >= 5) {
-    error({
-      title: `Too many matches found.`,
-      text: `We found ${data.length} countries. Please enter a more specific query!`,
-      styling: "brighttheme",
-      delay: 500,
-    });
-    return (refs.ulList.innerHTML = `<li>${country.name}</li>`);
-  }
+//   if (data && data.length >= 5) {
+//     error({
+//       title: `Too many matches found.`,
+//       text: `We found ${data.length} countries. Please enter a more specific query!`,
+//       styling: "brighttheme",
+//       delay: 500,
+//     });
+//     return (refs.ulList.innerHTML = `<li>${country.name}</li>`);
+//   }
   if (data.length <= 10) {
     refs.ulList.insertAdjacentHTML("beforeend", markupUl);
   }
