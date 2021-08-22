@@ -5,13 +5,11 @@ import countriesTamplate from "./templates/countriesTamlate.hbs";
 import listTamplate from "./templates/oneCardTemplate.hbs";
 // import { debounce } from "lodash.debounce";
 var debounce = require("lodash.debounce");
-
 import { error, info, notice } from "@pnotify/core";
-
 import "@pnotify/core/dist/Material.css";
 import "material-design-icons/iconfont/material-icons.css";
 import { defaults } from "@pnotify/core";
-// or
+
 defaults.styling = "material";
 defaults.icons = "material";
 
@@ -23,7 +21,6 @@ function searchCountry() {
   clearFeeld();
 
   const inputValue = refs.input.value;
-  console.log(inputValue);
   if (inputValue) {
     fetchCountries(inputValue.trim())
       .then((data) => upDateTamplate(data))
